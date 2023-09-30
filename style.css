@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  font-size: 12;
+  text-decoration: none;
+  outline: 0;
+}
+
+.nav-bar {
+  background-color: rgba(26, 37, 140, 0.2);
+  color: white;
+  padding: 16px 24px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  z-index: 999;
+}
+.nav-bar-scrolled {
+  background-color: rgba(26, 37, 140, 0.8) !important;
+  backdrop-filter: 30px;
+}
+
+.input-group {
+  left: 30px;
+  right: 30px;
+}
+
+.nav-bar-item {
+  color: white;
+  padding: 12px 16px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.nav-bar-item a {
+  text-decoration: none;
+}
+.nav-bar-link {
+  text-decoration: none;
+  color: white;
+  transition: all 0.4s ease-in-out;
+  margin-left: 20px;
+}
+
+.nav-bar-link:hover {
+  background-color: rgb(26, 37, 140);
+  padding: 20px;
+}
+#Summer {
+  font-family: "Satisfy", cursive;
+  font-size: 25px;
+  margin: 0;
+}
+
+.left-container {
+  padding: 100px;
+}

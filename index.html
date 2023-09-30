@@ -10,26 +10,46 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./assets/style/product.css" />
   </head>
   <body>
     <div class="main-container">
       <div class="nav-bar">
-        <input
-          type="text"
-          name="search"
-          id="navbar-search"
-          placeholder="Tìm kiếm"
-        />
-        <a href="">Thông tin hay</a>
-        <a href="">Tài khoản của tôi</a>
-        <a href="">Giỏ hàng</a>
+        <a href="/" style="color: white">
+          <p class="name" id="Summer">Summer</p></a
+        >
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon1"
+            ><i class="fas fa-search"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Search"
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
+          <div class="nav-bar-item">
+            <a href="" class="nav-bar-link">Thông tin hay</a>
+            <a href="./pages/login.html" class="nav-bar-link"
+              >Tài khoản của tôi</a
+            >
+            <a href="" class="nav-bar-link">Giỏ hàng</a>
+          </div>
+        </div>
       </div>
 
       <div class="left-container">
         <div class="brand-name">
-          <h2></h2>
+          <h3>Tên nhãn hàng</h3>
           <input type="checkbox" name="brand" id="brand-name" />
           <label for="brand">Tất cả</label>
 
@@ -44,7 +64,7 @@
         </div>
 
         <div class="price">
-          <h2>Price</h2>
+          <h3>Giá sản phẩm</h3>
           <input type="checkbox" name="price" id="price" />
           <label for="price">Tất cả</label>
 
@@ -57,20 +77,18 @@
           <input type="checkbox" name="price3" id="price" />
           <label for="price3">400- 500 ngàn</label>
         </div>
-      </div>
-      <div id="products-container">
-        <div id="products">
-          <div id="product-img"></div>
-          <div id="product-name"></div>
-          <div id="product-price"></div>
-          <div id="product-description"></div>
-        </div>
+        <div id="products"></div>
       </div>
     </div>
+    <script
+      src="https://kit.fontawesome.com/efbd4616bb.js"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="./script.js" type="module"></script>
   </body>
 </html>

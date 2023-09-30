@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
+#products {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+  padding: 2.5em 0;
+}
+
+#products .card {
+  max-width: 18em;
+  padding: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.7s;
+  border: none;
+  text-align: center;
+  overflow: visible;
+}
+
+#products .card:hover {
+  transform: translateY(-0.1in);
+}
+
+#products .card .image-container {
+  text-align: left;
+}
+
+#products .card .image-container img {
+  width: 100%;
+  object-fit: contain;
+  height: 15em;
+  box-shadow: 1em 2em 20px rgba(1, 2, 68, 0.02);
+}
+
+#products .card .container {
+  padding-top: 1em;
+  color: #110f29;
+}
+
+#products .card .container h5 {
+  font-weight: 700;
+  font-size: 20px;
+  font-family: "Playfair Display", serif !important;
+}
+
+#products .card .container h6 {
+  font-weight: 400;
+  font-size: 14px;
+  padding-top: 5px;
+}
