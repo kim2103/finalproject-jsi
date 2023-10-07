@@ -7,7 +7,18 @@ import {
   deleteDoc,
   doc,
   updateDoc,
+  query,
+  where,
+  limit,
 } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBJaRXL9RQemgo38Bt1NqBfNYwBK4M-K4w",
@@ -20,10 +31,27 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
-if (!localStorage.getItem("cart")) {
-  localStorage.setItem("cart", JSON.stringify([]));
-}
+let user = null;
+let cart = [];
+
+// async function getCart() {
+//   const q = query(
+//     collection(db, "carts"),
+//     where("userId", "==", user.uid),
+//     limit(1)
+//   );
+//   const querySnapshot = await getDocs(q);
+//   console.log("querySnapshot: ", querySnapshot);
+//   querySnapshot.forEach((doc) => {
+//     console.log(doc.id, " => ", doc.data());
+//     cart.push(doc.id);
+//   });
+
+//   if (!cart.length) {
+//   }
+// }
 
 async function getData() {
   const querySnapshot = await getDocs(collection(db, "books"));
@@ -64,7 +92,7 @@ async function getData() {
     btn.classList.add("btn");
     btn.classList.add("btn-primary");
     btn.innerHTML = `<i class="fa-solid fa-plus"></i> Thêm vào giỏ hàng`;
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", async () => {
       const product = {
         id: item.id,
         title: item.data().title,
@@ -75,12 +103,16 @@ async function getData() {
         category: item.data().category,
       };
 
-      const cart = JSON.parse(localStorage.getItem("cart"));
-
-      cart.unshift(product);
-
-      localStorage.setItem("cart", JSON.stringify(cart));
+      const docRef = await addDoc(collection(db, "carts"), {
+        cart: [],
+        userId: user.uid,
+      });
     });
+
+    let btn = document.createElement("button");
+    btn.classList.add("btn");
+    btn.classList.add("btn-primary");
+    btn.innerHTML = `<i class="fa-solid fa-plus"></i> Thêm vào giỏ hàng`;
 
     container.appendChild(btn);
 
@@ -91,3 +123,27 @@ async function getData() {
 }
 
 getData();
+const logOutBtn = document.getElementById("logout");
+logOutBtn.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.reload();
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+});
+
+onAuthStateChanged(auth, (cUser) => {
+  const spanContainer = document.getElementById("account");
+
+  if (cUser) {
+    console.log(cUser);
+    user = cUser;
+    spanContainer.innerHTML = `<a href="#" class="nav-bar-link">${cUser.email}</a>`;
+    //getCart();
+  } else {
+    logOutBtn.classList.add("d-none");
+    spanContainer.innerHTML = `<a href="./login.html" class="nav-bar-link">Tài khoản của tôi</a>`;
+  }
+});

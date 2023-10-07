@@ -40,25 +40,7 @@ async function getData() {
     document.getElementById("price").value = docSnap.data().price;
   } else {
     // docSnap.data() will be undefined in this case
-    window.location.href = "adminbooks.html";
+    window.location.href = "description.html";
   }
 }
-
 getData();
-
-let form = document.getElementById("create-form");
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  await updateDoc(doc(db, "books", bookId), {
-    title: document.getElementById("title").value,
-    author: document.getElementById("author").value,
-    category: document.getElementById("category").value,
-    description: document.getElementById("description").value,
-    imageUrl: document.getElementById("imageUrl").value,
-    price: document.getElementById("price").value,
-  });
-
-  alert("Successfully!!!");
-  window.location.href = "adminbooks.html";
-});

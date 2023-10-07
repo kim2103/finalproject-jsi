@@ -10,7 +10,7 @@
 }
 
 .nav-bar {
-  background-color: rgba(26, 37, 140, 0.2);
+  background-color: rgba(26, 37, 140);
   color: white;
   padding: 16px 24px;
   position: fixed;
@@ -21,10 +21,6 @@
   align-items: center;
   flex-direction: row;
   z-index: 999;
-}
-.nav-bar-scrolled {
-  background-color: rgba(26, 37, 140, 0.8) !important;
-  backdrop-filter: 30px;
 }
 
 .input-group {
@@ -48,7 +44,7 @@
 }
 
 .nav-bar-link:hover {
-  background-color: rgb(26, 37, 140);
+  background-color: rgb(26, 37, 140, 0.2);
   padding: 20px;
 }
 #Summer {

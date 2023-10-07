@@ -9,6 +9,14 @@ import {
   updateDoc,
 } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBJaRXL9RQemgo38Bt1NqBfNYwBK4M-K4w",
   authDomain: "finalproject-aff27.firebaseapp.com",
@@ -20,6 +28,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 let container = document.getElementById("table-container");
 
@@ -79,4 +88,10 @@ async function getData() {
   });
 }
 
-getData();
+onAuthStateChanged(auth, (user) => {
+  if (user && user.email == "kim@gmail.com") {
+    getData();
+  } else {
+    window.location.href = "./index.html";
+  }
+});
