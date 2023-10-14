@@ -31,16 +31,21 @@ async function getData() {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-    document.getElementById("title").value = docSnap.data().title;
-    document.getElementById("author").value = docSnap.data().author;
-    document.getElementById("category").value = docSnap.data().category;
-    document.getElementById("description").value = docSnap.data().description;
-    document.getElementById("imageUrl").value = docSnap.data().imageUrl;
-    document.getElementById("price").value = docSnap.data().price;
+    console.log(docSnap.data());
+
+    let image = document.getElementById("imageUrl");
+    image.src = docSnap.data().imageUrl;
+
+    document.getElementById("author").innerHTML = docSnap.data().author;
+    document.getElementById("title").innerHTML = docSnap.data().title;
+    document.getElementById("category").innerHTML = docSnap.data().category;
+    document.getElementById("description").innerHTML =
+      docSnap.data().description;
+    document.getElementById("price").innerHTML = docSnap.data().price + " VNĐ";
   } else {
     // docSnap.data() will be undefined in this case
-    window.location.href = "description.html";
+    window.location.href = "./index.html";
   }
 }
+
 getData();

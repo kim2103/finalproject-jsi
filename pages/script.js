@@ -62,7 +62,8 @@ async function getData() {
     card.classList.add("card");
 
     // Tạo div chứa img: img container
-    let imgContainer = document.createElement("div");
+    let imgContainer = document.createElement("a");
+    imgContainer.href = `description.html?id=` + item.id;
     imgContainer.classList.add("image-container");
 
     // Tạo img và đặt vào bên trong img container
@@ -87,27 +88,6 @@ async function getData() {
     container.appendChild(price);
 
     // thêm nút vào card
-
-    let btn = document.createElement("button");
-    btn.classList.add("btn");
-    btn.classList.add("btn-primary");
-    btn.innerHTML = `<i class="fa-solid fa-plus"></i> Thêm vào giỏ hàng`;
-    btn.addEventListener("click", async () => {
-      const product = {
-        id: item.id,
-        title: item.data().title,
-        price: item.data().price,
-        imageUrl: item.data().imageUrl,
-        author: item.data().author,
-        description: item.data().description,
-        category: item.data().category,
-      };
-
-      const docRef = await addDoc(collection(db, "carts"), {
-        cart: [],
-        userId: user.uid,
-      });
-    });
 
     let btn = document.createElement("button");
     btn.classList.add("btn");
