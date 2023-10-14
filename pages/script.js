@@ -103,6 +103,8 @@ async function getData() {
 }
 
 getData();
+
+//nav
 const logOutBtn = document.getElementById("logout");
 logOutBtn.addEventListener("click", () => {
   signOut(auth)

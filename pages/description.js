@@ -10,6 +10,14 @@ import {
   getDoc,
 } from "https://www.gstatic.com/firebasejs/10.2.0/firebase-firestore.js";
 
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+} from "https://www.gstatic.com/firebasejs/10.2.0/firebase-auth.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBJaRXL9RQemgo38Bt1NqBfNYwBK4M-K4w",
   authDomain: "finalproject-aff27.firebaseapp.com",
@@ -21,6 +29,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
@@ -49,3 +58,28 @@ async function getData() {
 }
 
 getData();
+
+const logOutBtn = document.getElementById("logout");
+logOutBtn.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.reload();
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+});
+
+onAuthStateChanged(auth, (cUser) => {
+  const spanContainer = document.getElementById("account");
+
+  if (cUser) {
+    console.log(cUser);
+    user = cUser;
+    spanContainer.innerHTML = `<a href="#" class="nav-bar-link">${cUser.email}</a>`;
+    //getCart();
+  } else {
+    logOutBtn.classList.add("d-none");
+    spanContainer.innerHTML = `<a href="./login.html" class="nav-bar-link">Tài khoản của tôi</a>`;
+  }
+});

@@ -19,6 +19,7 @@
   border: none;
   text-align: center;
   overflow: visible;
+  padding-top: 100px;
 }
 
 #products .card:hover {
