@@ -59,12 +59,12 @@ document.getElementById("signUpBtn").addEventListener("click", (e) => {
     .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log("user", user);
+      alert("susscessfull");
+      window.location.href = "./index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      console.log("error", errorMessage);
       alert(errorMessage);
       // ..
     });
@@ -90,9 +90,3 @@ document.getElementById("signInBtn").addEventListener("click", (e) => {
       alert(errorMessage);
     });
 });
-
-// onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     window.location.href = "./index.html";
-//   }
-// });
