@@ -35,7 +35,6 @@ let container = document.getElementById("table-container");
 async function getData() {
   const querySnapshot = await getDocs(collection(db, "books"));
   container.innerHTML = "";
-  console.log(querySnapshot);
   querySnapshot.forEach((item) => {
     let row = document.createElement("tr");
 

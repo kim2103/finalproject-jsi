@@ -38,7 +38,6 @@ let user = null;
 
 async function getData() {
   const querySnapshot = await getDocs(collection(db, "books"));
-  console.log(querySnapshot);
   querySnapshot.forEach((item) => {
     // Tạo div card
     let card = document.createElement("div");
@@ -101,7 +100,6 @@ onAuthStateChanged(auth, (cUser) => {
   const spanContainer = document.getElementById("account");
 
   if (cUser) {
-    console.log(cUser);
     user = cUser;
     spanContainer.innerHTML = `<a href="#" class="nav-bar-link">${cUser.email}</a>`;
     //getCart();

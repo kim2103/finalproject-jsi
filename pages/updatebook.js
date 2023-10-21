@@ -31,7 +31,6 @@ async function getData() {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
     document.getElementById("title").value = docSnap.data().title;
     document.getElementById("author").value = docSnap.data().author;
     document.getElementById("category").value = docSnap.data().category;

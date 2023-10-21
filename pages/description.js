@@ -40,8 +40,6 @@ async function getData() {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {
-    console.log(docSnap.data());
-
     let image = document.getElementById("imageUrl");
     image.src = docSnap.data().imageUrl;
 
@@ -74,7 +72,6 @@ onAuthStateChanged(auth, (cUser) => {
   const spanContainer = document.getElementById("account");
 
   if (cUser) {
-    console.log(cUser);
     user = cUser;
     spanContainer.innerHTML = `<a href="#" class="nav-bar-link">${cUser.email}</a>`;
     //getCart();
